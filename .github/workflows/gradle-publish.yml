@@ -20,7 +20,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin' # eclipse에서 만든 java
 
-    - name: 3. Build with Gradle
+   - name: 3. Change Execute Mode  # 안 되서 실행권한을 줌
+     run: chmod +x gradlew
+
+    - name: 4. Build with Gradle
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
       with:
         arguments: build
