@@ -7,7 +7,8 @@ on:                      # 언제 이 파이프라인을 움직일 거냐
 
 jobs:
   build:
-    runs-on: ubuntu-latest    # VM이 뜸
+#   runs-on: ubuntu-latest    # latest를 쓰면 버전이 계속 바뀌어서 오류남
+    runs-on: ubuntu-20.04     # VM이 뜸
 
     steps:
     - name: 1. Checkout Source  # VM 안으로 소스를 다운받음
@@ -20,8 +21,8 @@ jobs:
         java-version: '21'
         distribution: 'temurin' # eclipse에서 만든 java
 
-   - name: 3. Change Execute Mode  # 안 되서 실행권한을 줌
-     run: chmod +x gradlew
+    - name: 3. Change Execute Mode  # 안 되서 실행권한을 줌
+      run: chmod +x gradlew
 
     - name: 4. Build with Gradle
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
