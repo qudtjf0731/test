@@ -49,3 +49,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
         logout: true
+
+    - name: 7. Docker push
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/istory  # 현업에서는 action으로 해시값을 태그로 넣음
