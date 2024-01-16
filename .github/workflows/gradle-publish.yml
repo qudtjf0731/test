@@ -22,12 +22,23 @@ jobs:
         distribution: 'temurin' # eclipse에서 만든 java
 
     - name: 3. Change Execute Mode  # 안 되서 실행권한을 줌
-      run: chmod +x gradlew
+      run: chmod 755 gradlew
 
-    - name: 4. Build with Gradle
-      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
+    - name: 4. Install Mysql
+      uses: mirromutth/mysql-action@v1.1
       with:
-        arguments: build
+        host port: 3306
+        container port: 3306
+        mysql version: '8.0'
+        mysql database: 'istory'
+        mysql root password: 'admin123'
+        mysql user : 'dangtong'
+        mysql password: 'admin123'
+
+#    - name: 4. Build with Gradle
+#      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
+#      with:
+#        arguments: build
 #
 #    - name: Publish to GitHub Packages
 #      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
